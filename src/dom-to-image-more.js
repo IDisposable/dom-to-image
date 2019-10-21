@@ -210,6 +210,7 @@
 
         function makeNodeCopy(node) {
             if (node instanceof HTMLCanvasElement) return util.makeImage(node.toDataURL());
+            if (node instanceof HTMLImageElement) return util.cloneSvgImgToPngImg(node);
             return node.cloneNode(false);
         }
 
@@ -388,6 +389,7 @@
             asArray: asArray,
             escapeXhtml: escapeXhtml,
             makeImage: makeImage,
+            cloneSvgImgToPngImg:cloneSvgImgToPngImg,
             width: width,
             height: height
         };
@@ -490,6 +492,21 @@
                 image.onerror = reject;
                 image.src = uri;
             });
+        }
+
+        function cloneSvgImgToPngImg (dom) {
+            if (!dom || !(dom instanceof HTMLImageElement)) return dom;
+            var imgSrc = dom.getAttribute('src');
+            if (imgSrc.indexOf('data:image/svg+xml') === -1) {
+              return Promise.resolve(dom.cloneNode(false));
+            }
+            var virtualCanvas = document.createElement('canvas');
+            virtualCanvas.setAttribute('width', dom.clientWidth);
+            virtualCanvas.setAttribute('height', dom.clientHeight);
+      
+            var canvasContext = virtualCanvas.getContext('2d');
+            canvasContext.drawImage(dom, 0, 0, dom.clientWidth, dom.clientHeight);
+            return util.makeImage(virtualCanvas.toDataURL());
         }
 
         function getAndEncode(url) {
