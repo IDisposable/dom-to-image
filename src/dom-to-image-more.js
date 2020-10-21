@@ -263,6 +263,10 @@
             function cloneStyle() {
                 copyStyle(window.getComputedStyle(original), clone.style);
 
+                if ((util.isChrome() || util.isSafari() ) && clone.style.marker && ( clone.tagName === 'line' || clone.tagName === 'path')) {
+                    clone.style.marker = '';
+                }
+
                 function copyFont(source, target) {
                     target.font = source.font;
                     target.fontFamily = source.fontFamily;
@@ -283,6 +287,12 @@
                 function copyStyle(source, target) {
                     if (source.cssText) {
                         target.cssText = source.cssText;
+
+                        // Fix strange box-shadow in Safari
+                        if (util.isSafari()) {
+                            target.cssText = target.cssText.replace(/box-shadow(.*?);/, 'box-shadow: none!important;');
+                        }
+
                         copyFont(source, target); // here we re-assign the font props.
                     } else copyProperties(source, target);
 
@@ -417,7 +427,9 @@
             escapeXhtml: escapeXhtml,
             makeImage: makeImage,
             width: width,
-            height: height
+            height: height,
+            isChrome: isChrome,
+            isSafari: isSafari
         };
 
         function mimes() {
@@ -629,6 +641,14 @@
         function px(node, styleProperty) {
             var value = window.getComputedStyle(node).getPropertyValue(styleProperty);
             return parseFloat(value.replace('px', ''));
+        }
+
+        function isChrome() {
+            return /chrome/i.test( navigator.userAgent );
+        }
+
+        function isSafari() {
+            return /safari/i.test( navigator.userAgent );
         }
     }
 
