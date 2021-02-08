@@ -25,7 +25,7 @@ commands:
 jobs:
   test:
     docker:
-      - image: 'cimg/node:13.12-browser'
+      - image: 'cimg/node:15.8.0-browsers'
     steps:
       - browser-tools/install-browser-tools
       - init
@@ -34,7 +34,7 @@ jobs:
           command: yarn test
   deploy:
     docker:
-      - image: 'cimg/node:13.12-browser'
+      - image: 'cimg/node:15.8.0-browsers'
     steps:
       - browser-tools/install-browser-tools
       - init
