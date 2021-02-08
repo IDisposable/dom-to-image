@@ -8,6 +8,6 @@ input {
     width: 100%;
     font-family: monospace;
     font-size: 20px;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     padding: 1em;
 }

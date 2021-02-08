@@ -229,11 +229,11 @@
             it('should render user input from <input>', function(done) {
                 loadTestPage('input/dom-node.html', 'input/style.css')
                     .then(function() {
-                        document.getElementById('input').value = "USER INPUT";
+                        document.getElementById('input').value = "USERINPUT";
                     })
                     .then(renderToPng)
                     .then(drawDataUrl)
-                    .then(assertTextRendered(["USER INPUT"]))
+                    .then(assertTextRendered(["USERINPUT"]))
                     .then(done).catch(done);
             });
 
@@ -413,6 +413,7 @@
                                     try {
                                         assert.include(result.text, line);
                                     } catch (e) {
+                                        console.log('line', line, result, canvas())
                                         reject(e);
                                     }
                                 });
