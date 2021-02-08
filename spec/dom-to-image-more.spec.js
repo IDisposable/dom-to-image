@@ -413,7 +413,6 @@
                                     try {
                                         assert.include(result.text, line);
                                     } catch (e) {
-                                        console.log('line', line, result, canvas())
                                         reject(e);
                                     }
                                 });
