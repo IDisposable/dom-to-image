@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@x.y
+  browser-tools: circleci/browser-tools@1.1.1
 commands:
   init:
     description: 'sets up the environment'
