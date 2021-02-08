@@ -1,8 +1,6 @@
 version: 2.1
-executors:
-  base:
-    docker:
-      - image: hyphe/ci-base-images:0.8.1
+orbs:
+  browser-tools: circleci/browser-tools@x.y
 commands:
   init:
     description: 'sets up the environment'
@@ -26,15 +24,19 @@ commands:
           command: yarn build
 jobs:
   test:
-    executor: base
+    docker:
+      - image: 'cimg/node:13.12-browser'
     steps:
+      - browser-tools/install-browser-tools
       - init
       - run:
           name: unit tests
           command: yarn test
   deploy:
-    executor: base
+    docker:
+      - image: 'cimg/node:13.12-browser'
     steps:
+      - browser-tools/install-browser-tools
       - init
       - run:
           name: Authenticate with registry
