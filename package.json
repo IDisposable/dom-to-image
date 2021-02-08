@@ -2,7 +2,7 @@
     "name": "@bojagi/dom-to-image-more",
     "version": "2.8.0",
     "description": "Generates an image from a DOM node using HTML5 canvas and SVG",
-    "main": "dist/dom-to-image-more.min.js",
+    "main": "dist/@bojagi/dom-to-image-more.min.js",
     "dependencies": {},
     "devDependencies": {
         "chai": "^4.2.0",
@@ -38,8 +38,8 @@
         "canvas",
         "svg"
     ],
-    "author": "Marc Brooks <idisposable@gmail.com>",
     "contributors": [
+        "Marc Brooks <idisposable@gmail.com>",
         "Anatolii Saienko <anatoly.sayenko@gmail.com>",
         "Marc Brooks <idisposable@gmail.com>",
         "Daniel Fischer <daniel.fischer@iqdoq.de>",
@@ -49,7 +49,7 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/1904labs/dom-to-image-more/issues"
+        "url": "https://github.com/bojagi/dom-to-image-more/issues"
     },
-    "homepage": "https://github.com/1904labs/dom-to-image-more#readme"
+    "homepage": "https://github.com/bojagi/dom-to-image-more#readme"
 }

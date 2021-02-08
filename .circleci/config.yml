@@ -1,0 +1,62 @@
+version: 2.1
+executors:
+  base:
+    docker:
+      - image: hyphe/ci-base-images:0.8.1
+commands:
+  init:
+    description: 'sets up the environment'
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ .Branch }}
+            - yarn-cache-master
+      - run:
+          name: install dependencies
+          command: |
+            yarn --pure-lockfile
+      - save_cache:
+          key: yarn-cache-{{ .Branch }}-{{ .BuildNum }}
+          paths:
+            - /home/circleci/.cache/yarn/v1
+      - run:
+          name: build
+          command: yarn build
+jobs:
+  test:
+    executor: base
+    steps:
+      - init
+      - run:
+          name: unit tests
+          command: yarn test
+  deploy:
+    executor: base
+    steps:
+      - init
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: deploy
+          command: ./bin/deploy.sh
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/

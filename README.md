@@ -1,18 +1,17 @@
 # DOM to Image
-
-[![Build Status](https://travis-ci.org/1904labs/dom-to-image-more.svg?branch=master)](https://travis-ci.org/1904labs/dom-to-image-more)
-
 ## What is it
 
 **dom-to-image-more** is a library which can turn arbitrary DOM node into
 a vector (SVG) or raster (PNG or JPEG) image, written in JavaScript.
 
-This fork of [dom-to-image by Anatolii Saienko (tsayen)](https://github.com/tsayen/dom-to-image)
-with some important fixes merged. We are eternally grateful for his starting point.
+This fork of a fork (yay!) of https://github.com/1904labs/dom-to-image-more and [dom-to-image by Anatolii Saienko (tsayen)](https://github.com/tsayen/dom-to-image)
+with some important fixes merged. 
 
 Anatolii's version was based on [domvas by Paul Bakaus](https://github.com/pbakaus/domvas)
 and has been completely rewritten, with some bugs fixed and some new
 features (like web font and image support) added.
+
+Forked again due to inactivity.
 
 Moved to [1904labs organization](https://github.com/1904labs/) from my repositories 2019-02-06 as of version 2.7.3
 
