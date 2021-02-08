@@ -5,4 +5,5 @@ git checkout master
 git fetch -p
 git pull -r
 
-lerna version
+yarn version
+git push -tags

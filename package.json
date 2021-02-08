@@ -21,6 +21,7 @@
         "mocha": "^6.1.4"
     },
     "scripts": {
+        "publish": "./bin/publish.sh",
         "test": "./node_modules/.bin/grunt test",
         "build": "./node_modules/.bin/grunt"
     },
