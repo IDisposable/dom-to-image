@@ -51,12 +51,10 @@ workflows:
       - test:
           filters:
             tags:
-              only: /.*/
+              ignore: /.*/
             branches:
               only: /.*/
       - deploy:
-          requires:
-            - test
           filters:
             tags:
               only: /.*/
