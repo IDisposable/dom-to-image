@@ -1,6 +1,6 @@
 {
     "name": "@bojagi/dom-to-image-more",
-    "version": "2.8.2",
+    "version": "2.8.3",
     "description": "Generates an image from a DOM node using HTML5 canvas and SVG",
     "main": "dist/@bojagi/dom-to-image-more.min.js",
     "devDependencies": {
