@@ -6,4 +6,4 @@ git fetch -p
 git pull -r
 
 yarn version
-git push -tags
+git push --tags
