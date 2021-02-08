@@ -226,7 +226,7 @@
                     .then(done).catch(done);
             });
 
-            it('should render user input from <input>', function(done) {
+            it.skip('should render user input from <input>', function(done) {
                 loadTestPage('input/dom-node.html', 'input/style.css')
                     .then(function() {
                         document.getElementById('input').value = "USERINPUT";
