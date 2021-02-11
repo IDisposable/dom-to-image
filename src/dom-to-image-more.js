@@ -290,7 +290,7 @@
 
                         // Fix strange box-shadow in Safari
                         if (util.isSafari()) {
-                            target.cssText = target.cssText.replace(/box-shadow(.*?);/, 'box-shadow: none!important;');
+                            target.cssText = target.cssText.replace(/box-shadow:(.*?);/, 'box-shadow: none!important;');
                         }
 
                         copyFont(source, target); // here we re-assign the font props.
